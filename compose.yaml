@@ -1,0 +1,37 @@
+---
+version: "3"
+services:
+  db:
+    container_name: db
+    image: mourya09/librarypj:dbimage
+    ports: 
+      - "3306:3306"
+    volumes:
+      - db_volume:var/lib/sql
+
+  auth:
+    container_name: auth_service
+    image: mourya09/librarypj:authimage
+    ports:
+      - "5001:5001"
+    
+  books:
+    container_name: book_service
+    image: mourya09/librarypj:bookimage
+    ports: 
+      - "5002:5002"
+
+  borrow: 
+    container_name: borrow_service
+    image: mourya09/librarypj:borrowimage
+    ports:  
+      - "5003:5003"
+
+  appservice: 
+    container_name: frontend
+    image: mourya09/librarypj:appimage
+    ports:
+      - "5000:5000"
+
+volumes: 
+  db_volume:
