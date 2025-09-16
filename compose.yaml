@@ -7,7 +7,7 @@ services:
     ports: 
       - "3306:3306"
     volumes:
-      - db_volume:var/lib/sql
+      - db_volume:/var/lib/sql
 
   auth:
     container_name: auth_service
